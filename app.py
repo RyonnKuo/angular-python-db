@@ -67,7 +67,8 @@ def get_all_student():
 
 @app.route('/api/get_student', methods=['GET', 'HEAD'])
 def get_student():
-    email = request.form['email']
+    reqData = request.json
+    email = reqData.get('email')
     data = Student.get_student(email)
     print('get_data is called' f"{type(data)}")
     return jsonify(data)
@@ -81,7 +82,8 @@ def get_all_admin():
 
 @app.route('/api/get_admin', methods=['GET', 'HEAD'])
 def get_admin():
-    email = request.form['email']
+    reqData = request.json
+    email = reqData.get('email')
     data = Admin.get_admin(email)
     print('get_data is called' f"{type(data)}")
     return jsonify(data)
