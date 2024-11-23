@@ -94,7 +94,7 @@ class Student:
 
     @staticmethod
     def get_all_student():
-        sql = "SELECT email FROM student"
+        sql = "SELECT sid, name, email, phoneno FROM student"
         return DB.fetchall(sql)
 
     @staticmethod
@@ -111,5 +111,6 @@ class Admin:
 
     @staticmethod
     def get_all_admin():
-        sql = "SELECT email FROM admin"
+        sql = "SELECT aid, cid, name, phoneno, email FROM admin"
         return DB.fetchall(sql)
+
