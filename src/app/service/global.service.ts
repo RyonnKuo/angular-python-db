@@ -119,4 +119,43 @@ export class GlobalService {
     this.loginSubject.next(LoginType.Non);
     return false;
   }
+
+  formatDate(date: Date | undefined) {
+    if (date !== undefined) {
+      var d = new Date(date);
+      var month = '' + (d.getMonth() + 1);
+      var day = '' + d.getDate();
+      var year = d.getFullYear();
+
+      if (month.length < 2)
+          month = '0' + month;
+      if (day.length < 2)
+          day = '0' + day;
+
+      return [year, month, day].join('-');
+    }
+    return date;
+  }
+
+  isValidDate(input: string) {
+    // Regular expression to match yyyy-mm-dd format
+    const regex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
+
+    if (!regex.test(input)) {
+      return false; // Input does not match the format
+    }
+
+    // Parse the input into year, month, and day
+    const [year, month, day] = input.split('-').map(Number);
+
+    // JavaScript months are 0-indexed, so subtract 1 from the month
+    const date = new Date(year, month - 1, day);
+
+    // Check if the date is valid and matches the input (avoiding invalid dates like 2026-02-30)
+    return (
+      date.getFullYear() === year &&
+      date.getMonth() === month - 1 &&
+      date.getDate() === day
+    );
+  }
 }

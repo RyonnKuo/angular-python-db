@@ -21,7 +21,7 @@ export class LoginPageComponent implements OnInit {
 
   constructor(
     private gos: GlobalService,
-    private pys: PythonApiService,
+    private pas: PythonApiService,
   ) { }
 
   get disabledSubmitBtn() {
@@ -35,10 +35,14 @@ export class LoginPageComponent implements OnInit {
 
     try {
       this.gos.checkLoginObservable.subscribe((res) => {
-        console.log(`[login component] check Login Observable res: ${res}`);
+        console.log(`[login component] check Login Observable res: ${JSON.stringify(res)}`);
         this.errorMsg = res == LoginType.Non? 'Account OR Password incorrect!': '';
 
       });
+
+      // ===========for test===========
+      this.testLogin();
+      // ===========for test===========
 
     } catch (error) {
 
@@ -96,7 +100,15 @@ export class LoginPageComponent implements OnInit {
       console.log('phoneNo:', this.phoneNo);
       console.log('username:', this.username);
 
-      this.pys.studentReg(this.userEmail, this.phoneNo, this.username);
+      this.pas.studentReg(this.userEmail, this.phoneNo, this.username);
     }
+  }
+
+  testLogin() {
+    // this.userEmail = 'chou@gmail.com';
+    // this.phoneNo = '0911333666';
+    this.userEmail = 'alice@gmail.com';
+    this.phoneNo = '0987654321';
+    this.onSubmit();
   }
 }

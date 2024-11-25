@@ -1,0 +1,67 @@
+<div class="flex flex-col h-full w-full overflow-hidden">
+  <div class="flex flex-col w-full h-auto">
+    <div class="flex justify-end w-full px-2">
+      <button aria-label="close" class="w-4 h-4 close_btn btn_status" (click)="closeDialog()"></button>
+    </div>
+    <div class="w-full px-6">
+      <p class="text-lsm text-1c text-left">修改課程資訊</p>
+    </div>
+  </div>
+
+  <div class="grow flex flex-col justify-center items-end gap-3">
+
+    <div class="flex flex-row gap-2 items-center">
+      <span>課程 ID:</span>
+      <div class="flex w-[250px] h-8 px-3">
+        <input type="text" #cidInput placeholder="請輸入 101 或 102" spellcheck="false" [value]="cid"
+          (keyup)="keyUp(SESSION_INPUT.cid, cidInput.value)" required>
+      </div>
+    </div>
+
+    <div class="flex flex-row gap-2 items-center">
+      <span>課程名稱:</span>
+      <div class="flex w-[250px] h-8 px-3">
+        <input type="text" #snameInput placeholder="請輸入課程名稱" spellcheck="false"
+          (keyup)="keyUp(SESSION_INPUT.sname, snameInput.value)" required>
+      </div>
+    </div>
+
+    <div class="flex flex-row gap-2 items-center">
+      <span>課程開始日期:</span>
+      <div class="flex w-[250px] h-8 px-3">
+        <input type="text" #startdateInput placeholder="yyyy-mm-dd" spellcheck="false"
+          (keyup)="keyUp(SESSION_INPUT.startdate, startdateInput.value)" required>
+      </div>
+    </div>
+
+    <div class="flex flex-row gap-2 items-center">
+      <span>課程結束日期:</span>
+      <div class="flex w-[250px] h-8 px-3">
+        <input type="text" #enddateInput placeholder="yyyy-mm-dd" spellcheck="false"
+          (keyup)="keyUp(SESSION_INPUT.enddate, enddateInput.value)" required>
+      </div>
+    </div>
+
+    <div class="flex flex-row gap-2 items-center">
+      <span>課程描述</span>
+      <div class="flex w-[250px] h-8 px-3">
+        <input type="text" #sdescInput placeholder="課程描述" spellcheck="false"
+          (keyup)="keyUp(SESSION_INPUT.sdesc, sdescInput.value)" required>
+      </div>
+    </div>
+
+    <div class="flex flex-row gap-2 items-center">
+      <span>課程價格</span>
+      <div class="flex w-[250px] h-8 px-3">
+        <input type="text" #priceInput placeholder="課程價格" spellcheck="false" [value]="price"
+          (keyup)="keyUp(SESSION_INPUT.price, priceInput.value)" required>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-row justify-end items-center w-full h-[64px]">
+    <button class="fcc custom_basic_btn w-[156px]" [disabled]="disabledSubmitBtn" (click)="onSubmit()">
+      <span class="text-[14px] font-semibold">確定新增</span>
+    </button>
+  </div>
+</div>

@@ -22,7 +22,7 @@ export interface REGISTER_LIST {
 };
 
 export interface STUDENT {
-  sId: number;
+  sid: number;
   name: string;
   email: string;
   phoneNo: string;
@@ -36,13 +36,34 @@ export interface TUTOR {
 };
 
 export interface ADMIN {
-  aId: number;
+  aid: number;
+  cid: number;
   name: string;
   email: string;
   phoneNo: string;
 };
 
+export interface SESSION {
+  cid: number;
+  startdate: string;
+  sname: string;
+  sdesc: string;
+  enddate: string;
+  price: number;
+}
 
+export interface ENROLL {
+  sid: number,
+  startdate: string,
+  sname: string,
+  tno: number,
+  coupon: string,
+  amount: number,
+  tdate: string,
+  cardid: number,
+  cardenddate: string,
+  cardtype: string
+}
 
 export enum MainTab {
   Main = 'Main',
