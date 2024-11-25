@@ -106,11 +106,63 @@ class Student:
 class Admin:
     @staticmethod
     def get_admin(email):
-      sql = "SELECT sid, name, email, phoneno FROM admin WHERE email = %s"
+      sql = "SELECT aid, cid, name, email, phoneno FROM admin WHERE email = %s"
       return DB.fetchall(sql, (email,))
 
     @staticmethod
     def get_all_admin():
-        sql = "SELECT aid, cid, name, phoneno, email FROM admin"
-        return DB.fetchall(sql)
+      sql = "SELECT aid, cid, name, email, phoneno FROM admin"
+      return DB.fetchall(sql)
 
+class Session:
+    @staticmethod
+    def get_all_session():
+      sql = "SELECT cid, startdate, sname, sdesc, enddate, price FROM session"
+      return DB.fetchall(sql)
+
+    @staticmethod
+    def update_session(input_data):
+        sql = 'UPDATE session SET cid = %s, sdesc = %s, enddate = %s, price = %s WHERE startdate = %s and sname = %s'
+        DB.execute_input(sql, (input_data['cid'], input_data['sdesc'], input_data['enddate'], input_data['price'], input_data['startdate'], input_data['sname']))
+
+    @staticmethod
+    def delete_session(input_data):
+      sql = 'DELETE FROM session WHERE cid = %s and startdate = %s and sname = %s'
+      DB.execute_input(sql, (input_data['cid'], input_data['startdate'], input_data['sname']))
+
+    @staticmethod
+    def create_session(input_data):
+        sql = 'INSERT INTO session (cid, startdate, sname, sdesc, enddate, price) VALUES (%s, %s, %s, %s, %s, %s)'
+        DB.execute_input(sql, (input_data['cid'], input_data['startdate'], input_data['sname'], input_data['sdesc'], input_data['enddate'], input_data['price']))
+
+class Enroll:
+    @staticmethod
+    def get_all_enroll():
+      sql = "SELECT sid, startdate, sname, tno, coupon, amount, tdate, cardid, cardenddate, cardtype FROM enroll"
+      return DB.fetchall(sql)
+
+    @staticmethod
+    def get_enroll(sid):
+      sql = "SELECT sid, startdate, sname, tno, coupon, amount, tdate, cardid, cardenddate, cardtype FROM enroll WHERE sid = %s"
+      return DB.fetchall(sql, (sid,))
+
+    @staticmethod
+    def add_enroll(input_data):
+      sql = 'INSERT INTO enroll (sid, startdate, sname, tno, coupon, amount, tdate, cardid, cardenddate, cardtype) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'
+      DB.execute_input(sql, (input_data['sid'], input_data['startdate'], input_data['sname'], input_data['tno'], input_data['coupon'], input_data['amount'], input_data['tdate'], input_data['cardid'], input_data['cardenddate'], input_data['cardtype']))
+
+class Course:
+  @staticmethod
+  def create_course(input_data):
+      sql = 'INSERT INTO course (cid, sid, cname) VALUES (%s, %s, %s)'
+      DB.execute_input(sql, (input_data['cid'], input_data['sid'], input_data['cname']))
+
+  @staticmethod
+  def delete_course(cid):
+      sql = 'DELETE FROM course WHERE cid = %s'
+      DB.execute_input(sql, (cid))
+
+  @staticmethod
+  def update_session(input_data):
+      sql = 'UPDATE course SET sid = %s, cname = %s WHERE cid = %s'
+      DB.execute_input(sql, (input_data['sid'], input_data['cname'], input_data['cid']))

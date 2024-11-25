@@ -43,3 +43,110 @@ CREATE TABLE SESSION(
     SDESC VARCHAR(500),
     ENDDATE DATE,
     PRICE INTEGER);
+
+
+-- 學生student
+INSERT INTO student(SID,NAME,EMAIL,PHONENO)
+VALUES(201,'李小容','rong@gmail.com','0911222333');
+
+INSERT INTO student(SID,NAME,EMAIL,PHONENO)
+VALUES(202,'莊小雅','ya@gmail.com','0911555666');
+
+INSERT INTO student(SID,NAME,EMAIL,PHONENO)
+VALUES(203,'傅小容','fu@gmail.com','0911999888');
+
+INSERT INTO student(SID,NAME,EMAIL,PHONENO)
+VALUES(204,'郭小州','chou@gmail.com','0911333666');
+
+INSERT INTO student(SID,NAME,EMAIL,PHONENO)
+VALUES(205,'黃小益','yi@gmail.com','0911777999');
+
+INSERT INTO student(SID,NAME,EMAIL,PHONENO)
+VALUES(206,'王聰明','ming@gmail.com','0911555888');
+
+INSERT INTO student(SID,NAME,EMAIL,PHONENO)
+VALUES(207,'曾義文','wen@gmail.com','0911666111');
+
+
+-- 管理者admin
+INSERT INTO admin (AID,CID,NAME,PHONENO,EMAIL)
+VALUES(9001,101,'Alice','0987654321','alice@gmail.com');
+
+INSERT INTO admin (AID,CID,NAME,PHONENO,EMAIL)
+VALUES(9002,102,'Bee','0987654322','bee@gmail.com');
+
+-- 講師tutor
+INSERT INTO tutor(TID,STARTDATE,SNAME,NAME,PHONENO,SUBSTITUTORID)
+VALUES(1001, '2026-03-01', 'Basic Reading', 'Alice', '0987654321', 1004);
+
+INSERT INTO tutor(TID,STARTDATE,SNAME,NAME,PHONENO,SUBSTITUTORID)
+VALUES(1002, '2026-04-01', 'Basic Listening', 'Bee', '0987654322', 1002);
+
+INSERT INTO tutor(TID,STARTDATE,SNAME,NAME,PHONENO,SUBSTITUTORID)
+VALUES(1003, '2026-05-01', 'Basic Speaking', 'Candy', '0987654323', 1005);
+
+INSERT INTO tutor(TID,STARTDATE,SNAME,NAME,PHONENO,SUBSTITUTORID)
+VALUES(1004, '2026-06-01', 'Basic Writing', 'Debby', '0987654324', 1003);
+
+INSERT INTO tutor(TID,STARTDATE,SNAME,NAME,PHONENO,SUBSTITUTORID)
+VALUES(1005, '2026-07-01', 'Business Communication', 'Ellie', '0987654325', 1001);
+
+
+-- UPDATE tutor
+-- SET SUBSTITUTORID = 1001
+-- WHERE SUBSTITUTORID = '0987654321';
+
+
+-- 報名enroll
+INSERT INTO enroll (SID,STARTDATE,SNAME,TNO,COUPON,AMOUNT,TDATE,CARDID,CARDENDDATE,CARDTYPE)
+VALUES(201,'2026-01-01','Basic Reading',12341,'ABC',2500,'2025-11-30','1111222233334444','2030-12-30','VISA');
+
+INSERT INTO enroll (SID,STARTDATE,SNAME,TNO,COUPON,AMOUNT,TDATE,CARDID,CARDENDDATE,CARDTYPE)
+VALUES(202,'2026-02-01','Basic Listening',12342,null,3000,'2026-01-02','1111222255556666','2030-05-30','VISA');
+
+INSERT INTO enroll (SID,STARTDATE,SNAME,TNO,COUPON,AMOUNT,TDATE,CARDID,CARDENDDATE,CARDTYPE)
+VALUES(203,'2026-03-01','Basic Speaking',12343,null,3000,'2026-01-05','1111222277779999','2031-11-30','MASTERCARD');
+
+INSERT INTO enroll (SID,STARTDATE,SNAME,TNO,COUPON,AMOUNT,TDATE,CARDID,CARDENDDATE,CARDTYPE)
+VALUES(204,'2026-04-01','Basic Writing',12344,'ABC',2500,'2026-03-05','1111222244445555','2029-08-30','VISA');
+
+INSERT INTO enroll (SID,STARTDATE,SNAME,TNO,COUPON,AMOUNT,TDATE,CARDID,CARDENDDATE,CARDTYPE)
+VALUES(205,'2026-05-01','Business Communication',12345,'ABC',3500,'2026-03-05','1111222266667777','2032-07-30','MASTERCARD');
+
+INSERT INTO enroll (SID,STARTDATE,SNAME,TNO,COUPON,AMOUNT,TDATE,CARDID,CARDENDDATE,CARDTYPE)
+VALUES(206,'2026-06-01','Classical Literature',12346,null,4000,'2026-05-08','1111222211112222','2032-06-30','MASTERCARD');
+
+INSERT INTO enroll (SID,STARTDATE,SNAME,TNO,COUPON,AMOUNT,TDATE,CARDID,CARDENDDATE,CARDTYPE)
+VALUES(207,'2026-07-01','Translation',12347,null,4000,'2026-06-16','1111222277778888','2033-08-30','JCB');
+
+
+-- 課程course
+INSERT INTO course (cid,sid,cname)
+VALUES(101,201,'Basic Italian');
+
+INSERT INTO course (cid,sid,cname)
+VALUES(102,202,'Advance Italian');
+
+
+
+-- 課堂session
+INSERT INTO session (cid,startdate,sname,sdesc,enddate,price)
+VALUES(101,'2026-01-01','Basic Reading','Able to read Italian language','2026-01-31',3000);
+
+INSERT INTO session (cid,startdate,sname,sdesc,enddate,price)
+VALUES(101,'2026-02-01','Basic Listening','Able to listen to Italian language','2026-02-28',3000);
+
+INSERT INTO session (cid,startdate,sname,sdesc,enddate,price)
+VALUES(101,'2026-03-01','Basic Speaking','Able to speak to Italian language','2026-03-31',3000);
+
+INSERT INTO session (cid,startdate,sname,sdesc,enddate,price)
+VALUES(101,'2026-04-01','Basic Writing','Able to write Italian language','2026-04-30',3000);
+
+INSERT INTO session (cid,startdate,sname,sdesc,enddate,price)
+VALUES(102,'2026-05-01','Business Communication','Able to communicate in Business Italian','2026-05-31',4000);
+
+INSERT INTO session (cid,startdate,sname,sdesc,enddate,price)
+VALUES(102,'2026-06-01','Classical Literature','Able to understand classical Italian literature','2026-06-30',4000);
+
+INSERT INTO session (cid,startdate,sname,sdesc,enddate,price)
+VALUES(102,'2026-07-01','Translation','Able to translate Chinese to Italian','2026-07-31',4000);
