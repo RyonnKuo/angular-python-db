@@ -1,0 +1,41 @@
+<!-- 可報名課程 => 要拿到DB的課程清單
+    可透過「搜尋」尋找課程相關資訊 => 要有 input search 功能
+    可查看已報名課程訂單資訊
+    可填寫報名表單完成訂購 -->
+
+<div class="fcc h-full w-full">
+  <div class="w-full h-full overflow-y-auto overflow-x-hidden p-2 relative">
+    <div class="w-fit h-fit grid RWD_640px:grid-cols-2 RWD_910px:grid-cols-3 RWDl:grid-cols-4 gap-3">
+
+      <div *ngFor="let e of enroll; let i=index" class="fcc flex-col gap-1 relative w-[260px] h-[260px] bg-ff.85 p-4 gap-4 relative">
+        <span class="text-xlx text-4d">{{e.sname}}</span>
+        <span class="text-lsm text-1c">{{e.startdate}}</span>
+
+        <div class="fcc w-5 h-5 bg-4d absolute right-2 top-2 p-1 detail-trigger opacity-[70] hover:opacity-[100]">
+          <span class="text-lsm text-ff">i</span>
+          <div class="detail-block absolute flex-col items-start top-7 right-0 p-1 bg-3d min-w-[100px] w-fit gap-1">
+            <span class="text-lsm text-left text-ff">價格: {{e.amount}}</span>
+            <span class="text-lsm text-left text-ff">使用優惠卷: {{e.coupon}}</span>
+            <span class="text-lsm text-left text-ff">信用卡類別: {{e.cardtype}}</span>
+            <span class="text-lsm text-left text-ff">信用卡編號: {{e.cardid}}</span>
+            <span class="text-lsm text-left text-ff">信用卡結束日期: {{e.cardenddate}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div *ngFor="let s of session; let i=index" class="flex flex-col gap-2 relative w-[260px] h-[260px] bg-4d.33 p-4">
+        <div class="grow fcc flex-col gap-3">
+          <span class="text-xlx text-1c">{{s.sname}}</span>
+          <span class="text-lsm text-1c">{{s.startdate}}~{{s.enddate}}</span>
+          <span class="text-lsm text-1c">${{s.price}}</span>
+        </div>
+        <div class="fcc w-full">
+          <button class="fcc custom_basic_btn w-[156px]" (click)="userEnrollSession(s)">
+            <span class="text-[14px] font-semibold">報名</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

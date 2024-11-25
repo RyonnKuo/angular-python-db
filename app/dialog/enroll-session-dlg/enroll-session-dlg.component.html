@@ -1,0 +1,54 @@
+<div class="flex flex-col h-full w-full overflow-hidden">
+  <div class="flex flex-col w-full h-auto">
+    <div class="flex justify-end w-full px-2">
+      <button aria-label="close" class="w-4 h-4 close_btn btn_status" (click)="closeDialog(false)"></button>
+    </div>
+    <div class="w-full px-6">
+      <p class="text-lsm text-1c text-left">報名課程</p>
+    </div>
+  </div>
+
+  <div class="fcc flex-col w-full gap-2 p-2">
+    <span class="text-xlx text-4d">{{sessionInfo.sname}}</span>
+    <span class="text-lsm text-1c">Start Date: {{sessionInfo.startdate}}</span>
+  </div>
+  <div class="grow flex flex-col justify-center items-end gap-3">
+    <div class="flex flex-row gap-2 items-center">
+      <span>Coupon:</span>
+      <div class="flex w-[250px] h-8 px-3">
+        <input type="text" #couponInput placeholder="coupon number" spellcheck="false"
+          (keyup)="keyUp(ENROLL_INPUT.coupon, couponInput.value)" required>
+      </div>
+    </div>
+
+    <div class="flex flex-row gap-2 items-center">
+      <span>Card ID:</span>
+      <div class="flex w-[250px] h-8 px-3">
+        <input type="text" #cardidInput placeholder="Card ID" spellcheck="false"
+          (keyup)="keyUp(ENROLL_INPUT.cardid, cardidInput.value)" required>
+      </div>
+    </div>
+
+    <div class="flex flex-row gap-2 items-center">
+      <span>Card end date:</span>
+      <div class="flex w-[250px] h-8 px-3">
+        <input type="text" #cardenddateInput placeholder="yyyy-mm-dd" spellcheck="false"
+          (keyup)="keyUp(ENROLL_INPUT.cardenddate, cardenddateInput.value)" required>
+      </div>
+    </div>
+
+    <div class="flex flex-row gap-2 items-center">
+      <span>Card type:</span>
+      <div class="flex w-[250px] h-8 px-3">
+        <input type="text" #cardtypeInput placeholder="Card type" spellcheck="false"
+          (keyup)="keyUp(ENROLL_INPUT.cardtype, cardtypeInput.value)" required>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-row justify-end items-center w-full h-[64px]">
+    <button class="fcc custom_basic_btn w-[156px]" [disabled]="disabledSubmitBtn" (click)="onSubmit()">
+      <span class="text-[14px] font-semibold">確定報名</span>
+    </button>
+  </div>
+</div>

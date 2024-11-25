@@ -1,0 +1,125 @@
+<div class="flex flex-col justify-start items-start h-full w-full min-w-[1168px]">
+  <div class="w-full h-full overflow-y-auto p-2 relative">
+    <div class="flex flex-col justify-start items-start w-full gap-3 bg-4d.33 p-2">
+      <span class="text-xlx text-4d">被報名之課程資訊</span>
+      <div class="flex w-full">
+        <mat-table [dataSource]="enroll" class="w-full">
+          <ng-container matColumnDef="sid">
+            <mat-header-cell *matHeaderCellDef>學生編號</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.sid}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="sname">
+            <mat-header-cell *matHeaderCellDef>課程名稱</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.sname}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="startdate">
+            <mat-header-cell *matHeaderCellDef>課程開始日期</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.startdate}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="tno">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>交易編號</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">{{element.tno}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="tdate">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>交易日期</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">{{element.tdate}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="coupon">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>優惠券編號</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">{{element.coupon}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="amount">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>付款金額</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">{{element.amount}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="cardid">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>信用卡卡號</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">{{element.cardid}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="cardenddate">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>信用卡到期日</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">{{element.cardenddate}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="cardtype">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>信用卡類別</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">{{element.cardtype}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedEnrollColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedEnrollColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+
+    <div class="flex flex-col justify-start items-start w-full gap-3 bg-4d.33 p-2 mt-[20px]">
+      <div class="flex flex-row w-full justify-between">
+        <span class="text-xlx text-4d">課堂</span>
+        <button class="custom_basic_btn w-[156px]" (click)="createSession()">
+          <span class="font-semibold text-[14px]">新增課程</span>
+        </button>
+      </div>
+
+      <div class="flex w-full">
+        <mat-table [dataSource]="session" class="w-full">
+          <ng-container matColumnDef="cid">
+            <mat-header-cell *matHeaderCellDef>課程編號</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.cid}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="sname">
+            <mat-header-cell *matHeaderCellDef>課程名稱</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.sname}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="startdate">
+            <mat-header-cell *matHeaderCellDef>課程開始日期</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.startdate}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="enddate">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>課程結束日期</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">{{element.enddate}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="sdesc">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>課程描述</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">{{element.sdesc}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="price">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>課程價格</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">{{element.price}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <mat-header-cell mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let element">
+              <button class="custom_primary_btn w-[156px]" (click)="modifySessionInfo(element)">
+                <span class="text-[14px] font-semibold">修改/刪除</span>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedSessionColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedSessionColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+
+    <div class="flex flex-col w-full gap-2 bg-4d.33 mt-[20px]">
+      <div class="flex flex-row w-full gap-1 text-1c text-[14px] font-semibold">
+
+      </div>
+    </div>
+
+  </div>
+</div>

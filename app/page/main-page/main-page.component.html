@@ -1,0 +1,35 @@
+<div class="content fcc flex-col p-4 gap-2 w-screen h-screen">
+
+  <div class="fcc grow overflow-y-auto overflow-x-hidden">
+    <!-- login -->
+    <div *ngIf="loginType == LoginType.Non" class="w-full h-full">
+      <app-login-page></app-login-page>
+    </div>
+
+
+    <div *ngIf="loginType == LoginType.Admin" class="w-full h-full">
+      <app-admin-page></app-admin-page>
+    </div>
+    <div *ngIf="loginType == LoginType.Tutor" class="w-full h-full">
+      <app-tutor-page></app-tutor-page>
+    </div>
+    <div *ngIf="loginType == LoginType.Student" class="w-full h-full">
+      <app-student-page></app-student-page>
+    </div>
+  </div>
+
+  <!-- <div class="fcc flex-col gap-2">
+    <span class="text-80 text-lsm">-------------* for testing *-------------</span>
+    <button class="bg-80 w-[120px] h-[120px] btn_status rounded-[8px]">
+      <span class="text-00 text-xl" (click)="testCallBackend()">call backend</span>
+    </button>
+
+    <div class="flex flex-col items-start justify-start min-w-[120px] bg-80 rounded-[8px] p-2 gap-1">
+      <span class="text-ff text-lsm">result:</span>
+      <div *ngFor="let account of testData" class="fcc p-1">
+        <span class="text-ff text-lsm">{{account}}</span>
+      </div>
+    </div>
+    <span class="text-80 text-lsm">-------------* for testing *-------------</span>
+  </div> -->
+</div>
