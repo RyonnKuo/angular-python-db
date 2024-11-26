@@ -5,7 +5,7 @@
 [node] version 18.18.2
 
 1. modify db connect information in sql.py & link.py
-2. cd <angular-python-db>
+2. cd this/project/path
 3. yarn install
 4. prepare python env
 5. ng serve
