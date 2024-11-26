@@ -1,13 +1,12 @@
-# Angular Cli version
+# [How to run this project?]
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
+[Angular CLI] version 13.3.3.
+[python] version 3.10.0
+[node] version 18.18.2
 
-[How to run this project?]
 1. modify db connect information in sql.py & link.py
-2. check node version: 18.18.2
-3. cd <angular-python-db>
-4. yarn install
-5. check python version: 3.10.0
-6. prepare python env
-7. ng serve
-8. run app.py
+2. cd <angular-python-db>
+3. yarn install
+4. prepare python env
+5. ng serve
+6. run app.py
