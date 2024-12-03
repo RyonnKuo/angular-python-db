@@ -5,6 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class PythonApiService {
 
+  //http://127.0.0.1:5000/
+  private ngrokForwarding = 'https://e6e9-2001-b011-c009-b94f-9021-3caa-fd4a-e36f.ngrok-free.app';
+
   constructor() { }
 
   async studentReg(email: string, phoneNo: string, name: string): Promise<any> {
@@ -14,12 +17,12 @@ export class PythonApiService {
         phoneno: phoneNo,
         name: name
       }
-      const res = await fetch('http://127.0.0.1:5000/api/student_register', {
+      const res = await fetch(`${this.ngrokForwarding}/api/student_register`, {
         method: 'POST',
         mode: 'cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420"
         },
         body: JSON.stringify(param)
       });
@@ -38,12 +41,13 @@ export class PythonApiService {
   async getAllStudent(): Promise<any> {
 
     try {
-      const res = await fetch('http://127.0.0.1:5000/api/get_all_student', {
+      const res = await fetch(`${this.ngrokForwarding}/api/get_all_student`, {
         method: 'GET',
         mode: 'cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420"
         },
       });
 
@@ -56,7 +60,7 @@ export class PythonApiService {
     } catch (error) {
       return {
         "success": false,
-        "result": `[py api] getAllStudent error: ${JSON.stringify(error)}`
+        "result": `[py api] getAllStudent error: ${error}`
       };
     }
   }
@@ -66,12 +70,13 @@ export class PythonApiService {
       const param = {
         email: _email
       }
-      const res = await fetch('http://127.0.0.1:5000/api/get_student', {
+      const res = await fetch(`${this.ngrokForwarding}/api/get_student`, {
         method: 'POST',
         mode: 'cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420"
         },
         body: JSON.stringify(param)
       });
@@ -94,12 +99,13 @@ export class PythonApiService {
   async getAllAdmin(): Promise<any> {
 
     try {
-      const res = await fetch('http://127.0.0.1:5000/api/get_all_admin', {
+      const res = await fetch(`${this.ngrokForwarding}/api/get_all_admin`, {
         method: 'GET',
         mode: 'cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420"
         },
       });
 
@@ -122,12 +128,13 @@ export class PythonApiService {
       const param = {
         email: _email
       }
-      const res = await fetch('http://127.0.0.1:5000/api/get_admin', {
+      const res = await fetch(`${this.ngrokForwarding}/api/get_admin`, {
         method: 'POST',
         mode: 'cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420"
         },
         body: JSON.stringify(param)
       });
@@ -149,12 +156,13 @@ export class PythonApiService {
   async getAllSession(): Promise<any> {
 
     try {
-      const res = await fetch('http://127.0.0.1:5000/api/get_all_session', {
+      const res = await fetch(`${this.ngrokForwarding}/api/get_all_session`, {
         method: 'GET',
         mode: 'cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420"
         },
       });
 
@@ -184,12 +192,13 @@ export class PythonApiService {
           startdate: startdate,
           sname: sname
         }
-        const res = await fetch('http://127.0.0.1:5000/api/delete_session', {
+        const res = await fetch(`${this.ngrokForwarding}/api/delete_session`, {
           method: 'POST',
           mode: 'cors',
           headers: {
-            'Access-Control-Allow-Origin': '*',
+            "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "69420"
           },
           body: JSON.stringify(param)
         });
@@ -211,12 +220,13 @@ export class PythonApiService {
           sname: sname
         }
 
-        const res = await fetch('http://127.0.0.1:5000/api/update_session', {
+        const res = await fetch(`${this.ngrokForwarding}/api/update_session`, {
           method: 'POST',
           mode: 'cors',
           headers: {
-            'Access-Control-Allow-Origin': '*',
+            "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "69420"
           },
           body: JSON.stringify(param)
         });
@@ -237,12 +247,13 @@ export class PythonApiService {
           enddate: enddate,
           price: price
         }
-        const res = await fetch('http://127.0.0.1:5000/api/create_session', {
+        const res = await fetch(`${this.ngrokForwarding}/api/create_session`, {
           method: 'POST',
           mode: 'cors',
           headers: {
-            'Access-Control-Allow-Origin': '*',
+            "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "69420"
           },
           body: JSON.stringify(param)
         });
@@ -263,12 +274,13 @@ export class PythonApiService {
   async getAllEnroll(): Promise<any> {
 
     try {
-      const res = await fetch('http://127.0.0.1:5000/api/get_all_enroll', {
+      const res = await fetch(`${this.ngrokForwarding}/api/get_all_enroll`, {
         method: 'GET',
         mode: 'cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420"
         },
       });
 
@@ -292,12 +304,13 @@ export class PythonApiService {
       const param = {
         sid: _sid
       }
-      const res = await fetch('http://127.0.0.1:5000/api/get_enroll', {
+      const res = await fetch(`${this.ngrokForwarding}/api/get_enroll`, {
         method: 'POST',
         mode: 'cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420"
         },
         body: JSON.stringify(param)
       });
@@ -331,12 +344,13 @@ export class PythonApiService {
         cardenddate: cardenddate,
         cardtype: cardtype
       }
-      const res = await fetch('http://127.0.0.1:5000/api/add_enroll', {
+      const res = await fetch(`${this.ngrokForwarding}/api/add_enroll`, {
         method: 'POST',
         mode: 'cors',
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "69420"
         },
         body: JSON.stringify(param)
       });
