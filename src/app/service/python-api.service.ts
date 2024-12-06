@@ -21,6 +21,7 @@ export class PythonApiService {
         method: 'POST',
         mode: 'cors',
         headers: {
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
           "ngrok-skip-browser-warning": "69420"
         },
